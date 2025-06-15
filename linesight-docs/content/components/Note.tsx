@@ -1,52 +1,37 @@
-// components/Note.tsx
 import React from 'react';
 
-// This SVG icon is designed to match the image: a solid blue circle with a white 'i'
-const InfoIcon: React.FC = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 20 20"
-    className="h-5 w-5"
-  >
-    {/* Blue circle background */}
-    <circle cx="10" cy="10" r="9" fill="#2563EB" /> {/* Tailwind's blue-600 */}
-    {/* White 'i' symbol */}
-    <path
-      d="M10 10.5a.75.75 0 01-.75-.75V6a.75.75 0 011.5 0v3.75a.75.75 0 01-.75.75zM10 13a.75.75 0 100 1.5.75.75 0 000-1.5z"
-      fill="white"
-    />
-  </svg>
-);
-
 interface NoteProps {
+  title?: string;
   children: React.ReactNode;
+  className?: string;
 }
 
-const Note: React.FC<NoteProps> = ({ children }) => {
+export const Note: React.FC<NoteProps> = ({ 
+  title = "Note", 
+  children, 
+  className = "" 
+}) => {
   return (
-    // 1. Main container: flex, rounded, and clips overflow
-    <div
-      className="
-        flex                // Use flex to layout the border-bar and content
-        my-4                // Vertical margin for spacing
-        bg-gray-900         // The dark background
-        rounded-lg          // Use larger rounding to match the image
-        overflow-hidden     // CRITICAL: This clips children to the rounded corners
-        shadow-sm
-      "
+    <div 
+      className={`note-container ${className}`}
+      role="note"
+      aria-labelledby="note-title"
     >
-      {/* 2. The Left Border Bar: A dedicated div */}
-      <div className="w-1 flex-shrink-0 bg-blue-600" />
-
-      {/* 3. Content Area */}
-      <div className="flex items-start p-4">
-        <div className="mr-3 mt-0.5 flex-shrink-0">
-          <InfoIcon />
-        </div>
-        <div className="text-gray-300">{children}</div>
+      <div className="note-header">
+        <svg 
+          className="note-icon" 
+          width="16" 
+          height="16" 
+          viewBox="0 0 16 16"
+          fill="currentColor"
+        >
+          <path d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+        </svg>
+        <h4 id="note-title" className="note-title">{title}</h4>
+      </div>
+      <div className="note-content">
+        {children}
       </div>
     </div>
   );
 };
-
-export default Note;

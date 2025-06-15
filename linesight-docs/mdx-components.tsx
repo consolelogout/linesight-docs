@@ -1,7 +1,8 @@
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import type { MDXComponents } from "mdx/types";
 import { XEmbedClient } from "./content/components/XEmbedClient";
-import Note from './content/components/Note';
+import { Note, Warning, Tips } './content/components';
+
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
@@ -9,5 +10,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     XEmbed: XEmbedClient,
     ...components,
     Note,
+    Warning,
+    Tips,
   };
 }
