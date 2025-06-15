@@ -9,12 +9,6 @@ const inter = Inter({
   subsets: ['latin'],
 });
 
-export const baseOptions: BaseLayoutProps = {
-  githubUrl: 'https://github.com',
-};
-
-
-
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
