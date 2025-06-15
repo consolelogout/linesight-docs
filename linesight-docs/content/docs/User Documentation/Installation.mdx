@@ -46,3 +46,14 @@ pip install -e .
 
 In the folder ``/scripts/``, create a bash script that takes an integer ``port`` as its single argument. The script n the folder /scripts/, create a bash script that takes an integer port as its single argument. The script should start the game configured to listen on port port for TMInterface communications. The scripts ``/scripts/launch_game_pb.sh`` and ``/scripts/launch_game_agade.sh`` are working examples on the authors’ systems.
 
+<Note>
+It is a server component, you should not reference it in a client component.
+</Note>
+
+<Warning>
+This is a destructive action and cannot be reversed.
+</Warning>
+
+<Tip>
+You can use the `useMDXComponents` hook to provide components to all your MDX documents.
+</Tip>
